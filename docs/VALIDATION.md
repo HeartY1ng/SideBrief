@@ -29,7 +29,7 @@
 
 `./scripts/build.sh`：Release 构建、`.app` 打包与 ZIP 生成通过。另行执行 `codesign --verify --deep --strict`、`plutil -lint` 和脚本语法检查通过。包使用本地 ad-hoc 签名。
 
-GitHub Actions 工作流已提供，但截至这次验收尚未在远端运行。
+GitHub Actions 工作流已启用，执行相同的离线测试和 Release 构建。首次云端检查发现 macOS Bash 3.2 对空参数数组的兼容问题，测试脚本已修复，并在本地验证 Xcode 和 Command Line Tools 两条参数路径。[修复后的云端验证记录](https://github.com/HeartY1ng/SideBrief/actions/runs/35010168748)和[所有运行记录](https://github.com/HeartY1ng/SideBrief/actions)可公开查看。
 
 ## 真实采集与生成
 
@@ -61,6 +61,6 @@ GitHub Actions 工作流已提供，但截至这次验收尚未在远端运行�
 - 实际断网再联网、物理休眠再唤醒以及长期驻留；当前已覆盖核心调度、错误和恢复逻辑，尚未完成整夜现场观察。
 - 全部设置组合、定制来源的完整界面流程、复制后粘贴及每类卡片的浏览器目标页面。
 - Intel 与其他 macOS 版本、没有开发工具的新机器安装体验。
-- Apple Developer ID 签名、公证、GitHub 公共发布与远端 CI。
+- Apple Developer ID 签名与公证。
 
 上述场景列在[验收清单](UX-CHECKLIST.md)中，供后续设备测试继续记录。首版不含 API Key 模式、自动登录启动或多主题独立日报。
