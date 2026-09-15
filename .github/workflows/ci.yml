@@ -1,0 +1,22 @@
+name: Build and test
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  macos:
+    runs-on: macos-15
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test without network or model calls
+        run: ./scripts/test.sh
+      - name: Build app
+        run: ./scripts/build.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SideBrief-macOS
+          path: dist/SideBrief-macOS.zip
+          retention-days: 7
